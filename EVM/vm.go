@@ -6,7 +6,7 @@ const (
 	InstrPushInt  Instruction = 0x0a //10
 	InstrAdd      Instruction = 0x0b //1
 	InstrPushByte Instruction = 0x0c //
-	IntrPack      Instruction = 0x0d //
+	InstrPack     Instruction = 0x0d //
 )
 
 type Stack struct {
@@ -76,6 +76,11 @@ func (vm *VM) Exec(instr Instruction) error {
 		vm.stack.Push(c)
 	case InstrPack:
 		n := vm.stack.Pop().(int)
+		b := make([]byte, n)
+		for i := 0; i < n; i++ {
+			b[i] = vm.stack.Pop().(byte)
+		}
+		vm.stack.Push(b)
 
 	}
 	return nil

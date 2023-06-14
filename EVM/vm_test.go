@@ -20,10 +20,11 @@ func TestStack(t *testing.T) {
 
 func TestVM(t *testing.T) {
 
-	data := []byte{0x02, 0x0a, 0x61, 0x0c, 0x61, 0x0c, 0x0d}
+	data := []byte{0x03, 0x0a, 0x46, 0x0c, 0x4f, 0x0c, 0x4f, 0x0c, 0x0d}
 	vm := NewVM(data)
 	assert.Nil(t, vm.Run())
-	result := vm.stack.Pop()
-	assert.Equal(t, 4, result)
+
+	result := vm.stack.Pop().([]byte)
+	assert.Equal(t, "FOO", string(result))
 
 }
