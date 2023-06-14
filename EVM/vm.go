@@ -35,16 +35,18 @@ func (s *Stack) Pop() any {
 }
 
 type VM struct {
-	data  []byte
-	ip    int //instruction pointer
-	stack *Stack
+	data          []byte
+	ip            int //instruction pointer
+	stack         *Stack
+	contractState *State
 }
 
-func NewVM(data []byte) *VM {
+func NewVM(data []byte, contractState *State) *VM {
 	return &VM{
-		data:  data,
-		ip:    0,
-		stack: NewStack(128),
+		contractState: contractState,
+		data:          data,
+		ip:            0,
+		stack:         NewStack(128),
 	}
 }
 
