@@ -1,5 +1,11 @@
 package evm
 
+import (
+	"fmt"
+
+	"github.com/TafveezA/EVM/util"
+)
+
 type Instruction byte
 
 const (
@@ -7,6 +13,8 @@ const (
 	InstrAdd      Instruction = 0x0b //1
 	InstrPushByte Instruction = 0x0c //
 	InstrPack     Instruction = 0x0d //
+	InstrSub      Instruction = 0x0e //
+	InstrStore    Instruction = 0x0f //
 )
 
 type Stack struct {
@@ -71,6 +79,28 @@ func (vm *VM) Exec(instr Instruction) error {
 		vm.stack.Push(byte(vm.data[vm.ip-1]))
 	case InstrPushInt:
 		vm.stack.Push(int(vm.data[vm.ip-1]))
+	case InstrSub:
+		a := vm.stack.Pop().(int)
+		b := vm.stack.Pop().(int)
+		c := a - b
+		vm.stack.Push(c)
+	case InstrStore:
+		var (
+			key             = vm.stack.Pop().([]byte)
+			value           = vm.stack.Pop()
+			serializedValue []byte
+		)
+
+		switch v := value.(type) {
+		case int:
+			serializedValue = util.SerialzeInt64(int64(v))
+		default:
+			panic("TODO: unknown type")
+		}
+		fmt.Printf("%v\n", key)
+		fmt.Printf("%v\n", value)
+		fmt.Printf("%v\n", serializedValue)
+
 	case InstrAdd:
 		a := vm.stack.Pop().(int)
 		b := vm.stack.Pop().(int)
@@ -78,6 +108,7 @@ func (vm *VM) Exec(instr Instruction) error {
 		vm.stack.Push(c)
 	case InstrPack:
 		n := vm.stack.Pop().(int)
+		//panic(n)
 		b := make([]byte, n)
 		for i := 0; i < n; i++ {
 			b[i] = vm.stack.Pop().(byte)
