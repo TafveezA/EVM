@@ -1,8 +1,6 @@
 package evm
 
 import (
-	"fmt"
-
 	"github.com/TafveezA/EVM/util"
 )
 
@@ -97,9 +95,10 @@ func (vm *VM) Exec(instr Instruction) error {
 		default:
 			panic("TODO: unknown type")
 		}
-		fmt.Printf("%v\n", key)
-		fmt.Printf("%v\n", value)
-		fmt.Printf("%v\n", serializedValue)
+		// fmt.Printf("%v\n", key)
+		// fmt.Printf("%v\n", value)
+		// fmt.Printf("%v\n", serializedValue)
+		vm.contractState.Put(key, serializedValue)
 
 	case InstrAdd:
 		a := vm.stack.Pop().(int)
