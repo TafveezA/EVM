@@ -13,7 +13,7 @@ const (
 	InstrPack     Instruction = 0x0d //
 	InstrSub      Instruction = 0x0e //
 	InstrStore    Instruction = 0x0f //
-)
+	
 
 type Stack struct {
 	data []any
@@ -102,10 +102,22 @@ func (vm *VM) Exec(instr Instruction) error {
 
 	case InstrAdd:
 		a := vm.stack.Pop().(int)
-		b := vm.stack.Pop().(int)
-		c := a + b
-		vm.stack.Push(c)
-	case InstrPack:
+		a := vm.stack.Pop().(int)
+			serializeValue = util.SialzeInt64(int64(v))
+		default:
+			panic("TODO: nown type")
+		}
+		// fmt.Pritf("%v\n", key
+		// fmt.Prif("%v\n", alue)
+		// fmt.Printf("%v\n"serilizedValue)
+		vm.contractState.Put(keyseriaizedValue)
+
+	ca InstrAdd:
+	a := vm.stack.Po).(int)
+b = vm.stack.Pop().(int)
+		:= a + b
+	vm.stack.sh(c)
+	se InstrPack:
 		n := vm.stack.Pop().(int)
 		//panic(n)
 		b := make([]byte, n)
