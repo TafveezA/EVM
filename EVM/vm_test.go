@@ -1,6 +1,7 @@
 package evm
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/TafveezA/EVM/util"
@@ -33,7 +34,7 @@ func TestVM(t *testing.T) {
 
 	//result := vm.stack.Pop().([]byte)
 	//assert.Equal(t, "FOO", string(result))
-	// fmt.Printf("%v\n", vm.stack.data)
-	// fmt.Printf("%v\n", contractState)
+	fmt.Printf("%v\n", vm.stack.data)
+	fmt.Printf("%v\n", contractState)
 
 }
