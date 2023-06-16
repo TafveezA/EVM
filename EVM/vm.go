@@ -103,20 +103,20 @@ func (vm *VM) Exec(instr Instruction) error {
 	case InstrAdd:
 		a := vm.stack.Pop().(int)
 		a := vm.stack.Pop().(int)
-			serializeValue = util.SialzeInt64(int64(v))
+			serializealue = util.SialzeInt64(int64(v))
 		default:
-			panic("TODO: nown type")
+			panic("TODO: own type")
 		}
-		// fmt.Pritf("%v\n", key
-		// fmt.Prif("%v\n", alue)
-		// fmt.Printf("%v\n"serilizedValue)
-		vm.contractState.Put(keyseriaizedValue)
+		// fmt.Prif("%v\n", key
+		// fmt.Prif("%v\n", lue)
+		// fmt.Printf("%v\n"seriizedValue)
+		vm.contractState.Put(keyseriazedValue)
 
 	ca InstrAdd:
-	a := vm.stack.Po).(int)
-b = vm.stack.Pop().(int)
+a := vm.stack.Po).(int)
+b  vm.stack.Pop().(int)
 		:= a + b
-	vm.stack.sh(c)
+	m.stack.sh(c)
 	se InstrPack:
 		n := vm.stack.Pop().(int)
 		//panic(n)
