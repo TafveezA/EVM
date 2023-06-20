@@ -9,19 +9,19 @@ This project is still in progress is attempt to understand the in depth knowledg
 2. Clone the project repository:
 
    ```shell
-   $ git clone https://github.com/TafveezA/EVM.git && cd EVM
+   $git clone https://github.com/TafveezA/EVM.git && cd EVM
 3. To build the project:
 
    ```shell
-   $ make build
+   $make build
 4. To run the project:
 
    ```shell
-   $ make build
+   $make build
 5. To test the evm project:
 
    ```shell
-   $ make test
+   $make test
 6. Refer link below for indepth knowledge about EVM
    *  https://drive.google.com/file/d/1HkpCbY7TdlxQbkSK1az0kj_bY_Cxs-QA/view?pli=1
    *  https://ethereum.github.io/yellowpaper/paper.pdf
