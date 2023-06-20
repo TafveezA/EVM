@@ -10,6 +10,6 @@ This project is still in progress is attempt to understand the in depth knowledg
 
    ```shell
    $ git clone https://github.com/TafveezA/EVM.git
-3. Refer this slides for indepth knowledge about EVM
+3. Refer link below for indepth knowledge about EVM
    *  https://drive.google.com/file/d/1HkpCbY7TdlxQbkSK1az0kj_bY_Cxs-QA/view?pli=1
    *  https://ethereum.github.io/yellowpaper/paper.pdf
