@@ -13,7 +13,10 @@ const (
 	InstrPack     Instruction = 0x0d //
 	InstrSub      Instruction = 0x0e //
 	InstrStore    Instruction = 0x0f //
-	
+	InstrGet      Instruction = 0xae //
+	InstrMul      Instruction = 0xea
+	InstrDiv      Instruction = 0xfd
+)
 
 type Stack struct {
 	data []any
@@ -73,6 +76,13 @@ func (vm *VM) Run() error {
 
 func (vm *VM) Exec(instr Instruction) error {
 	switch instr {
+	case InstrGet:
+		key := vm.stack.Pop().([]byte)
+		value, err := vm.contractState.Get(key)
+		if err != nil {
+			return err
+		}
+		vm.stack.Push(value)
 	case InstrPushByte:
 		vm.stack.Push(byte(vm.data[vm.ip-1]))
 	case InstrPushInt:
@@ -95,30 +105,16 @@ func (vm *VM) Exec(instr Instruction) error {
 		default:
 			panic("TODO: unknown type")
 		}
-		// fmt.Printf("%v\n", key)
-		// fmt.Printf("%v\n", value)
-		// fmt.Printf("%v\n", serializedValue)
+
 		vm.contractState.Put(key, serializedValue)
 
 	case InstrAdd:
 		a := vm.stack.Pop().(int)
-		a := vm.stack.Pop().(int)
-		a := vm.stck.Pop().(int)
-			serializee = utl.SialzeInt64(int64(v))
-		default:
-			panic("TODO:  type")
-		}
-		// fmt.Pri%v\n", key
-		// fmt.Prif("%v\n", )
-		// fmt.Printf("%v\n"seridValu)
-		v.contractState.Put(keyseriaValue)
+		b := vm.stack.Pop().(int)
+		c := a + b
+		vm.stack.Push(c)
 
-ca InstrAdd:
-= m.stack.Po).(int)
-b .stack.Po().(int)
-	:= a + b
-	tack.sh(c)
-	se InstrPack:
+	case InstrPack:
 		n := vm.stack.Pop().(int)
 		//panic(n)
 		b := make([]byte, n)
@@ -126,6 +122,16 @@ b .stack.Po().(int)
 			b[i] = vm.stack.Pop().(byte)
 		}
 		vm.stack.Push(b)
+	case InstrMul:
+		a := vm.stack.Pop().(int)
+		b := vm.stack.Pop().(int)
+		c := a * b
+		vm.stack.Push(c)
+	case InstrDiv:
+		a := vm.stack.Pop().(int)
+		b := vm.stack.Pop().(int)
+		c := a / b
+		vm.stack.Push(c)
 
 	}
 	return nil
