@@ -9,7 +9,7 @@ This project is still in progress is attempt to understand the in depth knowledg
 2. Clone the project repository:
 
    ```shell
-   $ git clone https://github.com/TafveezA/EVM.git
+   $ git clone https://github.com/TafveezA/EVM.git && cd EVM
 3. To build the project:
 
    ```shell
