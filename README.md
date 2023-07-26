@@ -17,7 +17,7 @@ This project is still in progress is attempt to understand the in depth knowledg
 4. To run the project:
 
    ```shell
-   $ make build
+   $ make run
 5. To test the evm project:
 
    ```shell
